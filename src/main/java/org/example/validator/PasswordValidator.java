@@ -6,11 +6,15 @@ import org.example.common.MessageConstant;
 public class PasswordValidator {
 
     public static boolean isValid(String password) {
-        if(StringUtils.isBlank(password)) {
+        if (StringUtils.isBlank(password)) {
             throw new IllegalArgumentException();
         }
-        if(password.length() > 10) {
-            throw new IllegalArgumentException(MessageConstant.CHAR_LENGTH_ERROR_MESSAGE);
+        int passwordLength = password.length();
+        if (passwordLength > 10) {
+            throw new IllegalArgumentException(MessageConstant.MAX_CHAR_LENGTH_ERROR_MESSAGE);
+        }
+        if (passwordLength < 5) {
+            throw new IllegalArgumentException(MessageConstant.MIN_CHAR_LENGTH_ERROR_MESSAGE);
         }
 
         return true;

@@ -9,6 +9,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class PasswordValidatorTest {
 
     @Test
+    public void should_throw_illegal_argument_exception_when_password_length_is_less_than_five_chars() {
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> PasswordValidator.isValid(TestConstant.INVALID_PASSWORD_LESS_THAN5_CHAR));
+
+        assertNotNull(ex);
+        assertEquals(IllegalArgumentException.class, ex.getClass());
+        assertNotNull(ex.getMessage());
+        assertEquals(MessageConstant.MIN_CHAR_LENGTH_ERROR_MESSAGE, ex.getMessage());
+    }
+
+    @Test
     public void should_throw_illegal_argument_exception_when_password_length_is_more_than_ten_chars() {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
                 () -> PasswordValidator.isValid(TestConstant.INVALID_PASSWORD_MORE_THAN10_CHAR));
@@ -16,7 +27,7 @@ class PasswordValidatorTest {
         assertNotNull(ex);
         assertEquals(IllegalArgumentException.class, ex.getClass());
         assertNotNull(ex.getMessage());
-        assertEquals(MessageConstant.CHAR_LENGTH_ERROR_MESSAGE, ex.getMessage());
+        assertEquals(MessageConstant.MAX_CHAR_LENGTH_ERROR_MESSAGE, ex.getMessage());
     }
 
     @Test
