@@ -1,5 +1,6 @@
 package org.example.common;
 
 public class TestConstant {
-    public static final String VALID_PASSWORD = "password1234";
+    public static final String VALID_PASSWORD = "password12";
+    public static final String INVALID_PASSWORD_MORE_THAN10_CHAR = "password1234567";
 }
